@@ -1,9 +1,9 @@
 .container
   h3 Campaign Report Open List
-  = render_csv(@csv) if @csv
+
   = simple_form_for :active_campaign, url: active_campaign_retrieve_campaign_report_open_list_path, method: :post do |f|
     = f.input :access_token
     = f.input :campaign_ids
     .form-check.form-check-inline
       = f.input :selected_fields, as: :check_boxes, collection: campaign_report_open_list_responses, input_html: { class: 'form-check-input' }
-    = f.submit
+    = f.submit "Downloading", value: :csv, name: :format

@@ -1,3 +1,5 @@
+require 'csv'
+
 module ApplicationHelper
   def campaign_report_open_list_responses
     [
@@ -86,13 +88,10 @@ module ApplicationHelper
     ]
   end
 
-  def render_csv(csv)
-    csv_value = ""
-
-    csv.each do |item|
-      csv_value += "#{item.join(',')}"
+  def render_csv(csv_string)
+    file = CSV.generate do |csv|
+      csv_string.map {|row| csv << csv_string}
     end
-
-    csv_value.html_safe
+    byebug
   end
 end
