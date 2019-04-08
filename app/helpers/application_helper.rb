@@ -85,4 +85,14 @@ module ApplicationHelper
       "replysys"
     ]
   end
+
+  def render_csv(csv)
+    csv_value = ""
+
+    csv.each do |item|
+      csv_value += "#{item.join(',')}"
+    end
+
+    csv_value.html_safe
+  end
 end
